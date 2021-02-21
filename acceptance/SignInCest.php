@@ -2,6 +2,8 @@
 
 class SigninCest
 {
+
+
     public function _before(AcceptanceTester $I)
     {
         $I->amOnPage('/');
@@ -15,16 +17,18 @@ class SigninCest
 	$I->click(['class'=>'login-btns']);
 	$I->see('Невалидни данни за достъп. Грешен E-mail или парола.');
     }
+
 	//correct pass needed
-  public function signInWrongMail(AcceptanceTester $I)
+    public function signInWrongMail(AcceptanceTester $I)
     {	
 	$I->fillField(['id'=>'login-email'], 'wrong@email.com');
 	$I->fillField(['id'=>'password'], 'correctPass');	
 	$I->click(['class'=>'login-btns']);
 	$I->see('Невалидни данни за достъп. Грешен E-mail или парола.');
     }
+	
 	//correct mail needed
- public function signInWrongPass(AcceptanceTester $I)
+    public function signInWrongPass(AcceptanceTester $I)
     {
 	$I->fillField(['id'=>'login-email'], 'correct@email.com');
 	$I->fillField(['id'=>'password'], 'wrongPass');	
@@ -32,33 +36,43 @@ class SigninCest
 	$I->see('Невалидни данни за достъп. Грешен E-mail или парола.');
     }
 
-   public function signInEmpty(AcceptanceTester $I)
+    public function signInEmpty(AcceptanceTester $I)
     {	
 	$I->click(['class'=>'login-btns']);
 	$I->see('Полето е задължително.');
     }
 
-   public function signInEmptyMail(AcceptanceTester $I)
+    public function signInEmptyMail(AcceptanceTester $I)
     {	
 	$I->fillField(['id'=>'password'], 'correctPass');
 	$I->click(['class'=>'login-btns']);
 	$I->see('Полето е задължително.');
     }
 
-   public function signInEmptyPass(AcceptanceTester $I)
+    public function signInEmptyPass(AcceptanceTester $I)
     {	
 	$I->fillField(['id'=>'login-email'], 'correct@email.com');
 	$I->click(['class'=>'login-btns']);
 	$I->see('Вход');
     }
-
-   /*public function signInAtSymbolMissing(AcceptanceTester $I)
+    
+    public function signInForggotenPass(AcceptanceTester $I)
     {	
-	$I->fillField(['id'=>'login-email'], 'correctemail.com');
-	$I->click(['class'=>'login-btns']);
-	$I->seeResponseContainsJson(['error' => 'Please include an "@" in the email address']);
-	$I->seeInPopup('Please include an "@" in the email address');
-    }*/
+	$I->click(['link'=>'Забравена парола?']);
+	$I->see('Забравена парола');
+    }
+    
+    public function signInRegNow(AcceptanceTester $I)
+    {	
+	$I->click(['link'=>'Регистрирайте се сега']);
+	$I->see('Регистрация');
+    }
+
+    public function signInFacebook(AcceptanceTester $I)
+    {	
+	$I->click(['link'=>'Log in with Facebook']);
+	$I->see('Facebook');
+    }
 
 }
 
