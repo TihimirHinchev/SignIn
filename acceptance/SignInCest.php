@@ -8,7 +8,7 @@ class SigninCest
 	$I->see('Вход');
     }
 
-    /*public function signInWrongMailAndPass(AcceptanceTester $I)
+    public function signInWrongMailAndPass(AcceptanceTester $I)
     {	
 	$I->fillField(['id'=>'login-email'], 'wrong@email.com');
 	$I->fillField(['id'=>'password'], 'wrongpass');	
@@ -50,15 +50,15 @@ class SigninCest
 	$I->fillField(['id'=>'login-email'], 'correct@email.com');
 	$I->click(['class'=>'login-btns']);
 	$I->see('Вход');
-    }*/
+    }
 
-   public function signInAtSymbolMissing(AcceptanceTester $I)
+   /*public function signInAtSymbolMissing(AcceptanceTester $I)
     {	
 	$I->fillField(['id'=>'login-email'], 'correctemail.com');
 	$I->click(['class'=>'login-btns']);
 	$I->seeResponseContainsJson(['error' => 'Please include an "@" in the email address']);
 	$I->seeInPopup('Please include an "@" in the email address');
-    }
+    }*/
 
 }
 
